@@ -3,11 +3,11 @@
 //  MemeMe-1.0
 //
 //  Created by Victor Tejada Yau on 06/20/21.
-//
+// delegate is an object that executes a group of methods behalf of anohter object
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     
     @IBOutlet weak var topMessage: UITextField!
@@ -25,13 +25,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view.
        
-        topMessage.defaultTextAttributes = memeTextAttributes
-        topMessage.insertText("TOP")
-        topMessage.textAlignment = .center
+        topMessage.text = "TOP"
+        setupTextField(textField: topMessage)
         
-        bottomMessage.defaultTextAttributes = memeTextAttributes
-        bottomMessage.insertText("BOTTOM")
-        bottomMessage.textAlignment = .center
+        bottomMessage.text = "BOTTOM"
+        setupTextField(textField: bottomMessage)
+    }
+    
+    func setupTextField(textField: UITextField) {
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.delegate = self
     }
     
     @IBAction func pickAnImage(_ sender: Any) {
@@ -44,6 +48,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "BOTTOM" || textField.text == "TOP" {
+            textField.text = ""
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == topMessage && textField.text == "" {
+            textField.text = "TOP"
+        }
+        
+        if textField == bottomMessage && textField.text == "" {
+            textField.text = "BOTTOM"
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
