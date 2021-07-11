@@ -12,6 +12,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topMessage: UITextField!
     @IBOutlet weak var bottomMessage: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
+    @IBOutlet var cameraButton: UIBarButtonItem!
+
     
     let imagePicker = UIImagePickerController()
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
@@ -40,6 +42,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
     @IBAction func pickAnImage(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
@@ -54,11 +61,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerControllerDidCancel(_: UIImagePickerController) {
            dismiss(animated: true, completion: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -79,6 +81,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
     }
     
     func subscribeToKeyboardNotifications() {
@@ -97,6 +100,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
+    }
+    
+    func generatedMemedImage() -> UIImage {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        return memedImage
     }
 }
 
