@@ -15,63 +15,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b3k-BV-ORA" userLabel="imagePickerView">
-                                <rect key="frame" x="20" y="219" width="374" height="458"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="458" id="qVC-Lg-qgZ"/>
-                                    <constraint firstAttribute="width" constant="374" id="xc2-qd-zEw"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B3A-jh-lID">
+                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W0q-Wf-28N" userLabel="top">
-                                <rect key="frame" x="20" y="163" width="374" height="34"/>
-                                <accessibility key="accessibilityConfiguration" label="top"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwt-ZH-ujU">
-                                <rect key="frame" x="0.0" y="744" width="454" height="118"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eG8-eF-0sW">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <items>
-                                    <barButtonItem title="pick" id="RM0-uW-j5r">
-                                        <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="bGk-Wx-nIv"/>
-                                        </connections>
+                                    <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="XNG-cu-DpV"/>
+                                    <barButtonItem width="287" style="plain" systemItem="fixedSpace" id="QvJ-hI-epx">
+                                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="cancel" id="yPi-y5-vpF"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Bf-Do-Tbb" userLabel="top">
-                                <rect key="frame" x="20" y="694" width="374" height="34"/>
-                                <accessibility key="accessibilityConfiguration" label="bottom"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uxE-bM-oI3">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem width="113" style="plain" systemItem="fixedSpace" id="HAl-9D-R5O"/>
+                                    <barButtonItem title="camera" image="camera" catalog="system" id="geu-Hi-Yvr"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="D5S-QZ-FJv"/>
+                                    <barButtonItem title="Album" id="svt-px-jU1"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="b3k-BV-ORA" firstAttribute="leading" secondItem="5Bf-Do-Tbb" secondAttribute="leading" id="4V1-zS-wTD"/>
-                            <constraint firstItem="W0q-Wf-28N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="119" id="5zj-M8-GEe"/>
-                            <constraint firstItem="b3k-BV-ORA" firstAttribute="leading" secondItem="W0q-Wf-28N" secondAttribute="leading" id="BPx-gH-Jt0"/>
-                            <constraint firstItem="b3k-BV-ORA" firstAttribute="trailing" secondItem="W0q-Wf-28N" secondAttribute="trailing" id="Es1-4w-DLw"/>
-                            <constraint firstItem="W0q-Wf-28N" firstAttribute="centerX" secondItem="bwt-ZH-ujU" secondAttribute="centerX" constant="-20" id="JKZ-ew-m6C"/>
-                            <constraint firstItem="b3k-BV-ORA" firstAttribute="centerX" secondItem="bwt-ZH-ujU" secondAttribute="centerX" constant="-20" id="LXu-ka-6Ct"/>
-                            <constraint firstItem="b3k-BV-ORA" firstAttribute="trailing" secondItem="5Bf-Do-Tbb" secondAttribute="trailing" id="NzR-oM-2Rh"/>
-                            <constraint firstItem="b3k-BV-ORA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="b0t-93-vyw"/>
-                            <constraint firstItem="b3k-BV-ORA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hkM-er-Vbr"/>
-                            <constraint firstItem="bwt-ZH-ujU" firstAttribute="top" secondItem="b3k-BV-ORA" secondAttribute="bottom" constant="67" id="k9b-DA-ewj"/>
-                            <constraint firstItem="bwt-ZH-ujU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qQG-AL-6IN"/>
-                            <constraint firstItem="5Bf-Do-Tbb" firstAttribute="top" secondItem="b3k-BV-ORA" secondAttribute="bottom" constant="17" id="ttl-Mt-GrP"/>
-                            <constraint firstItem="bwt-ZH-ujU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zHd-eZ-Fes"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <connections>
-                        <outlet property="bottomMessage" destination="5Bf-Do-Tbb" id="zB2-hN-xZR"/>
-                        <outlet property="imagePickerView" destination="b3k-BV-ORA" id="fr0-d9-Nit"/>
-                        <outlet property="topMessage" destination="W0q-Wf-28N" id="xlN-fl-mIG"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="102.45535714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" catalog="system" width="128" height="94"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+    </resources>
 </document>

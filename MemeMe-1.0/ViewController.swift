@@ -27,13 +27,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view.
        
-        topMessage.text = "TOP"
-        setupTextField(textField: topMessage)
-        
-        bottomMessage.text = "BOTTOM"
-        setupTextField(textField: bottomMessage)
-        
-        imagePicker.delegate = self
+//        topMessage.text = "TOP"
+//        setupTextField(textField: topMessage)
+//        
+//        bottomMessage.text = "BOTTOM"
+//        setupTextField(textField: bottomMessage)
+//        
+//        imagePicker.delegate = self
     }
     
     func setupTextField(textField: UITextField) {
