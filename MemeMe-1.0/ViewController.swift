@@ -17,23 +17,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     let imagePicker = UIImagePickerController()
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
-        NSAttributedString.Key.strokeColor: UIColor.green  /* TODO: fill in appropriate UIColor */,
-        NSAttributedString.Key.foregroundColor: UIColor.blue/* TODO: fill in appropriate UIColor */,
+        NSAttributedString.Key.strokeColor: UIColor.blue  /* TODO: fill in appropriate UIColor */,
+        NSAttributedString.Key.foregroundColor: UIColor.black /* TODO: fill in appropriate UIColor */,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth: 1.0 /* TODO: fill in appropriate Float */
+        NSAttributedString.Key.strokeWidth: 2.0 /* TODO: fill in appropriate Float */
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
        
-//        topMessage.text = "TOP"
-//        setupTextField(textField: topMessage)
-//        
-//        bottomMessage.text = "BOTTOM"
-//        setupTextField(textField: bottomMessage)
-//        
-//        imagePicker.delegate = self
+        topMessage.text = "TOP"
+        setupTextField(textField: topMessage)
+        
+        bottomMessage.text = "BOTTOM"
+        setupTextField(textField: bottomMessage)
+        
+        imagePicker.delegate = self
+        
+        cameraButton.isEnabled = UIImagePickerController.availableMediaTypes(for: .camera) != nil
     }
     
     func setupTextField(textField: UITextField) {
@@ -50,6 +52,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func pickAnImage(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        let camera = UIImagePickerController()
+        camera.sourceType = .camera
+        camera.allowsEditing = true
+        present(camera, animated: true, completion: nil)
+    }
+    
+    @IBAction func onShare(_ sender: Any) {
+        print("#padentro")
+        let meme = generatedMemedImage()
+        
+        let uiController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+        present(uiController, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -83,6 +100,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
     
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
