@@ -74,9 +74,11 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="bottomBar" destination="uxE-bM-oI3" id="zop-tI-sQJ"/>
                         <outlet property="bottomMessage" destination="Ut7-6i-i0n" id="c7w-2x-Cb6"/>
                         <outlet property="cameraButton" destination="geu-Hi-Yvr" id="PjF-Dq-5JX"/>
                         <outlet property="imagePickerView" destination="B3A-jh-lID" id="cFO-HV-SBd"/>
+                        <outlet property="topBar" destination="eG8-eF-0sW" id="nGr-eq-Jis"/>
                         <outlet property="topMessage" destination="Ype-xo-3xQ" id="vRb-MR-jl8"/>
                     </connections>
                 </viewController>

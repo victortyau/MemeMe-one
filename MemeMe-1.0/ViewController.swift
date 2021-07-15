@@ -14,11 +14,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
 
+    @IBOutlet weak var topBar: UIToolbar!
+    @IBOutlet weak var bottomBar: UIToolbar!
     
     let imagePicker = UIImagePickerController()
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.blue  /* TODO: fill in appropriate UIColor */,
-        NSAttributedString.Key.foregroundColor: UIColor.black /* TODO: fill in appropriate UIColor */,
+        NSAttributedString.Key.foregroundColor: UIColor.white /* TODO: fill in appropriate UIColor */,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedString.Key.strokeWidth: 2.0 /* TODO: fill in appropriate Float */
     ]
@@ -121,9 +123,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func generatedMemedImage() -> UIImage {
+        
+        topBar.isHidden = true
+        bottomBar.isHidden = true
+        
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        topBar.isHidden = false
+        bottomBar.isHidden = false
+        
         return memedImage
     }
 }
