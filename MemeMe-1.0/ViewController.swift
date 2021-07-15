@@ -25,14 +25,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedString.Key.strokeWidth: 2.0 /* TODO: fill in appropriate Float */
     ]
     
+    let buttonTags = ["TOP", "BOTTOM"]
+    
+    struct Meme {
+        var top: String = ""
+        var bottom: String = ""
+        var image: UIImage?
+        var memeImage: UIImage?
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
        
-        topMessage.text = "TOP"
+        topMessage.text = buttonTags[0]
         setupTextField(textField: topMessage)
         
-        bottomMessage.text = "BOTTOM"
+        bottomMessage.text = buttonTags[1]
         setupTextField(textField: bottomMessage)
         
         imagePicker.delegate = self
@@ -68,7 +77,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let meme = generatedMemedImage()
         
         let uiController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+        uiController.completionWithItemsHandler = {
+            (activity, completed, items, error) in
+            if completed {
+                self.save()
+            }
+        }
         present(uiController, animated: true, completion: nil)
+    }
+    
+    @IBAction func onCancel(_ sender: Any) {
+        topMessage.text = buttonTags[0]
+        bottomMessage.text = buttonTags[1]
+        self.imagePickerView.image = nil
+    }
+    
+    func save() {
+        let meme = generatedMemedImage()
+        _ = Meme(top: topMessage.text!, bottom: bottomMessage.text!, image: imagePickerView.image, memeImage: meme)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -83,18 +109,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == "BOTTOM" || textField.text == "TOP" {
+        if textField.text == buttonTags[0] || textField.text == buttonTags[1] {
             textField.text = ""
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == topMessage && textField.text == "" {
-            textField.text = "TOP"
+            textField.text = buttonTags[0]
         }
         
         if textField == bottomMessage && textField.text == "" {
-            textField.text = "BOTTOM"
+            textField.text = buttonTags[1]
         }
     }
     
