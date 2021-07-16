@@ -13,7 +13,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomMessage: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
-
     @IBOutlet weak var topBar: UIToolbar!
     @IBOutlet weak var bottomBar: UIToolbar!
     
@@ -22,7 +21,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedString.Key.strokeColor: UIColor.blue  /* TODO: fill in appropriate UIColor */,
         NSAttributedString.Key.foregroundColor: UIColor.white /* TODO: fill in appropriate UIColor */,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth: 2.0 /* TODO: fill in appropriate Float */
+        NSAttributedString.Key.strokeWidth: -2.0 /* TODO: fill in appropriate Float */
     ]
     
     let buttonTags = ["TOP", "BOTTOM"]
